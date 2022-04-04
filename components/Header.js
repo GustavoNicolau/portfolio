@@ -5,7 +5,7 @@ export default function Header(){
         <header>
             <div className='container'>
                 <Link href='/'>
-                    GN Blog
+                    LLL
                 </Link>
             </div>
         </header>
