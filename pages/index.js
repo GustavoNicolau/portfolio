@@ -5,14 +5,14 @@ import Head from 'next/head'
 import Post from '../components/Post'
 import { sortByDate } from '../utils'
 
-export default function Home({posts}) {
+export default function Home({ posts }) {
   return (
     <div>
       <Head>
         <title>Gustavo Nicolau Blog</title>
       </Head>
 
-      <div className='posts'>
+      <div className="posts">
         {posts.map((post, index) => (
           <Post key={index} post={post} />
         ))}
@@ -22,8 +22,7 @@ export default function Home({posts}) {
 }
 
 export async function getStaticProps() {
-
-  const files = fs.readdirSync(path.join('posts'))  
+  const files = fs.readdirSync(path.join('posts'))
 
   const posts = files.map(filename => {
     const slug = filename.replace('.md', '')
@@ -36,15 +35,13 @@ export async function getStaticProps() {
     const { data: frontmatter } = matter(markdownWithMeta)
     return {
       slug,
-      frontmatter
+      frontmatter,
     }
   })
 
-
-
   return {
     props: {
-      posts: posts.sort(sortByDate)
+      posts: posts.sort(sortByDate),
     },
   }
 }
